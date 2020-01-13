@@ -4,33 +4,25 @@ const dataChecksForTodo = [{
   },
 ];
 
-let taskValue = "";
-
 const app = new Vue({
   el: '#app',
   data: {
     dataTodo: dataChecksForTodo,
-    modelTask: taskValue,
+    modelTask: "",
   },
   methods: {
     saveTodo: function() {
-           let vm = this;
-      if (this.modelTask != "") {
+      let vm = this;
+      if (this.modelTask) {
         this.dataTodo.unshift({
           title: vm.modelTask,
           check: false
         });
-
       }
-
     },
     deleteTodo: function(index) {
         let vm = this;
-      if (index != 0) {
-        vm.dataTodo.splice(index, index);
-      } else {
-        vm.dataTodo.shift();
-      }
+        vm.dataTodo.splice(index, 1);
     }
   },
   vuetify: new Vuetify(),
